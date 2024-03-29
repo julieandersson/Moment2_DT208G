@@ -4,6 +4,7 @@ import { Todo } from "./ItoDo";
 
 export class TodoList {
     private todos: Todo[]; /* Array av Todo-objekt */
+    private readonly storageKey: string = "todos";
 
     constructor() {
         this.todos = this.loadFromLocalStorage();
@@ -35,12 +36,12 @@ export class TodoList {
 
     /* metod för att spara todos till localStorage */
     saveToLocalStorage(): void {
-        localStorage.setItem("todos", JSON.stringify(this.todos));
+        localStorage.setItem(this.storageKey, JSON.stringify(this.todos));
     }
 
     /* metod för att hämta todos från localStorage */
     loadFromLocalStorage(): Todo[] {
-        const storedTodos = localStorage.getItem("todos");
+        const storedTodos = localStorage.getItem(this.storageKey);
         return storedTodos ? JSON.parse(storedTodos) : [];
     }
 }
