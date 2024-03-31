@@ -54,21 +54,35 @@ form {
 }
 
 li {
-    display: flex;
-    align-items: center;
     margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+}
+
+.created-date {
+    font-style: italic;
+    color: #666;
+    grid-row: 1;
+}
+
+.completed-date {
+    font-style: italic;
+    color: green;
+    grid-row: 2;
 }
 
 label {
-    flex: 1;
-    margin-right: 10px;
     margin-bottom: 5px;
+    grid-row: 3;
 }
 
 input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    grid-row: 1;
     margin-left: auto;
     width: 20px;
     height: 20px;
@@ -120,7 +134,7 @@ button:hover {
 }
 
 #todoList {
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;

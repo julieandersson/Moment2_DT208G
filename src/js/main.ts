@@ -48,10 +48,24 @@ function displayTodos() {
         const listItem = document.createElement('li'); // Skapar ett nytt listelement
         const label = document.createElement('label'); // Skapar ett nytt label-element
         label.textContent = `${todo.task} - Prioritet: ${todo.priority}`;
+
+        const createDateElement = document.createElement('span'); // Skapar ett element för skapad-datumet
+        createDateElement.textContent = `Skapad: ${todo.createdDate.toLocaleString()}`;
+        createDateElement.classList.add('created-date');
+        listItem.appendChild(createDateElement);
+
+       // Skapa element för datum när todo är markerad som klar
+       if (todo.completedDate) {
+        const completeDateElement = document.createElement('span');
+        completeDateElement.textContent = `Slutförd: ${todo.completedDate.toLocaleString()}`;
+        completeDateElement.classList.add('completed-date');
+        listItem.appendChild(completeDateElement);
+   }
         const checkbox = document.createElement('input'); // Skapar ett checkbox-element
         checkbox.type = 'checkbox'; // Sätter typen till 'checkbox'
         checkbox.checked = todo.completed; // Sätter kryssrutan till markerad om todo är klar
         label.style.textDecoration = todo.completed ? 'line-through' : 'none'; // Överstruken text om todo är klar
+
 
     // Lägger till en händelselyssnare för att kunna markera/avmarkera checkboxen 
     checkbox.addEventListener('change', () => {

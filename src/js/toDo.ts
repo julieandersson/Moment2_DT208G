@@ -15,7 +15,12 @@ export class TodoList {
         if (task.trim() === "" || isNaN(priority) || priority < 1 || priority > 3) {
             return false;
         }
-        const newTodo: Todo = { task: task, completed: false, priority: priority };
+        const newTodo: Todo = { 
+        task: task,
+        completed: false,
+        priority: priority,
+        createdDate: new Date()
+    };
         this.todos.push(newTodo);
         this.saveToLocalStorage();
         return true;
@@ -25,6 +30,13 @@ export class TodoList {
     markTodoCompleted(todoIndex: number, completed: boolean): void {
         if (todoIndex >= 0 && todoIndex < this.todos.length) {
             this.todos[todoIndex].completed = completed;
+            // Uppdatera datum när en todo markeras som klar
+            if (completed) {
+                this.todos[todoIndex].completedDate = new Date();
+            } else {
+            // Nollställ datumet om todo avmarkeras
+                this.todos[todoIndex].completedDate = undefined;
+            }
             this.saveToLocalStorage();
         }
     }
