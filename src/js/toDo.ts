@@ -22,11 +22,17 @@ export class TodoList {
     }
 
     /* metod för att markera todos som klara */
-    markTodoCompleted(todoIndex: number): void {
+    markTodoCompleted(todoIndex: number, completed: boolean): void {
         if (todoIndex >= 0 && todoIndex < this.todos.length) {
-            this.todos[todoIndex].completed = true;
+            this.todos[todoIndex].completed = completed;
             this.saveToLocalStorage();
         }
+    }
+
+    /* metod för att rensa alla todos */
+    clearAllTodos(): void {
+        this.todos = [];
+        this.saveToLocalStorage();
     }
 
     /* metod för att hämta listan med todos */
