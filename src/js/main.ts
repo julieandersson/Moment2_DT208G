@@ -73,8 +73,8 @@ function displayTodos() {
         todoList.markTodoCompleted(index, isChecked);
         displayTodos();
     });
-        
 
+       
         // Lägger till label till listelementet
         listItem.appendChild(label);
         // Lägger till checkbox till listelementet

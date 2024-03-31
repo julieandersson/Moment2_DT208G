@@ -62,4 +62,12 @@ export class TodoList {
         const storedTodos = localStorage.getItem(this.storageKey);
         return storedTodos ? JSON.parse(storedTodos) : [];
     }
+
+    /* metod för att ta bort en todo */
+    deleteTodo(todoIndex: number): void {
+        if (todoIndex >= 0 && todoIndex < this.todos.length) {
+            this.todos.splice(todoIndex, 1); // Ta bort todo från listan
+            this.saveToLocalStorage(); // Spara ändringar till localStorage
+        }
+    }
 }
