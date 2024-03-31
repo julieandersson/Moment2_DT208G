@@ -53,9 +53,34 @@ form {
     background-color: #f9f9f9;
 }
 
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 label {
-    display: block;
+    flex: 1;
+    margin-right: 10px;
     margin-bottom: 5px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    background-color: white;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #38db3d;
+    border-color: #38a23b;
 }
 
 input[type="text"],
@@ -101,5 +126,5 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-    list-style: none;
 }
+
