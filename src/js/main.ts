@@ -30,6 +30,12 @@ form.addEventListener('submit', function(event) {
     }
 });
 
+// Händelselyssnare på knappen för att rensa hela listan
+clearListBtn.addEventListener('click', function() {
+    todoList.clearAllTodos();
+    displayTodos();
+});
+
 // Visar todos när sidan laddas
 displayTodos();
 
@@ -42,10 +48,23 @@ function displayTodos() {
         const listItem = document.createElement('li'); // Skapar ett nytt listelement
         const label = document.createElement('label'); // Skapar ett nytt label-element
         label.textContent = `${todo.task} - Prioritet: ${todo.priority}`;
+        const checkbox = document.createElement('input'); // Skapar ett checkbox-element
+        checkbox.type = 'checkbox'; // Sätter typen till 'checkbox'
+        checkbox.checked = todo.completed; // Sätter kryssrutan till markerad om todo är klar
+        label.style.textDecoration = todo.completed ? 'line-through' : 'none'; // Överstruken text om todo är klar
+
+    // Lägger till en händelselyssnare för att kunna markera/avmarkera checkboxen 
+    checkbox.addEventListener('change', () => {
+        const isChecked = checkbox.checked;
+        todoList.markTodoCompleted(index, isChecked);
+        displayTodos();
+    });
         
 
         // Lägger till label till listelementet
         listItem.appendChild(label);
+        // Lägger till checkbox till listelementet
+        listItem.appendChild(checkbox);
         // Lägger till listelementet till todo-listan
         todoListContainer.appendChild(listItem);
     });
