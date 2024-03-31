@@ -74,6 +74,15 @@ function displayTodos() {
         displayTodos();
     });
 
+        // Skapar knapp för att radera todo
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Radera';
+        deleteButton.classList.add('delete-button');
+        deleteButton.addEventListener('click', () => {
+            todoList.deleteTodo(index);
+            displayTodos();
+        });
+
        
         // Lägger till label till listelementet
         listItem.appendChild(label);
@@ -81,6 +90,8 @@ function displayTodos() {
         listItem.appendChild(checkbox);
         // Lägger till listelementet till todo-listan
         todoListContainer.appendChild(listItem);
+        // Lägg till raderingsknappen till listelementet
+        listItem.appendChild(deleteButton);
     });
 }
 
