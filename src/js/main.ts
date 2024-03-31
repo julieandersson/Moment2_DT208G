@@ -50,14 +50,14 @@ function displayTodos() {
         label.textContent = `${todo.task} - Prioritet: ${todo.priority}`;
 
         const createDateElement = document.createElement('span'); // Skapar ett element för skapad-datumet
-        createDateElement.textContent = `Skapad: ${new Date(todo.createdDate).toLocaleString('sv-SE', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+        createDateElement.textContent = `Skapad: ${new Date(todo.createdDate).toLocaleString('sv-SE', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}`;
         createDateElement.classList.add('created-date');
         listItem.appendChild(createDateElement);
 
        // Skapa element för datum när todo är markerad som klar
        if (todo.completedDate) {
         const completeDateElement = document.createElement('span');
-        completeDateElement.textContent = `Slutförd: ${new Date(todo.completedDate).toLocaleString('sv-SE', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+        completeDateElement.textContent = `Slutförd: ${new Date(todo.completedDate).toLocaleString('sv-SE', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}`;
         completeDateElement.classList.add('completed-date');
         listItem.appendChild(completeDateElement);
    }
